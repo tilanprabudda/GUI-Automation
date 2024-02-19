@@ -32,6 +32,13 @@ def automate_click_no_button(x, y, clicks=1, interval=0.5):
     for _ in range(clicks):
         pyautogui.click()
         time.sleep(interval)
+        pyautogui.write(str(i+1), interval=0.25)
+
+def automate_click_no_button2(x, y, clicks=1, interval=0.5):
+    pyautogui.moveTo(x, y, duration=0.5)
+    for _ in range(clicks):
+        pyautogui.click()
+        time.sleep(interval)
 
 # Define the coordinates and intervals
 coordinates = [
@@ -40,9 +47,9 @@ coordinates = [
     (1020, 410),  # Right-click menu click
     (480, 480)    # Save the photo
 ]
-intervals = [1, 1, 1, 1]  # Assuming interval 1 for all actions
+intervals = [1, 1, 1.5, 1]  # Assuming interval 1 for all actions
 
 # Loop through the actions
-for i in range(100):
-    for coord, interval, click_function in zip(coordinates, intervals, [automate_click_click, automate_click_right, automate_click_no_button, automate_click_no_button]):
+for i in range(60):
+    for coord, interval, click_function in zip(coordinates, intervals, [automate_click_click, automate_click_right, automate_click_no_button, automate_click_no_button2]):
         click_function(*coord, clicks=1, interval=interval)
